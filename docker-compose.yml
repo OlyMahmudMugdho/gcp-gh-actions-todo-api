@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: todo
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - db-net
+
+  app:
+    image: olymahmudmugdho/gcp-gh-actions-todo-api
+    container_name: todo-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
+
+networks:
+  db-net:
+    driver: bridge
+    name: database
