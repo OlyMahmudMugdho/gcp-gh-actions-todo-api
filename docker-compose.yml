@@ -17,6 +17,7 @@ services:
   app:
     image: olymahmudmugdho/gcp-gh-actions-todo-api
     container_name: todo-app
+    restart: always
     environment:
       - PG_HOST=db
     ports:
