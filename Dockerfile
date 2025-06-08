@@ -7,7 +7,7 @@ RUN go mod tidy
 
 COPY . .
 
-RUN go build -o todo-app .
+RUN go build -o todo-app cmd/main.go
 
 FROM alpine:latest
 
