@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres
-    container_name: postgres
+    container_name: db
     restart: always
     environment:
       POSTGRES_USER: postgres
@@ -17,6 +17,8 @@ services:
   app:
     image: olymahmudmugdho/gcp-gh-actions-todo-api
     container_name: todo-app
+    environment:
+      - PG_HOST=db
     ports:
       - "8080:8080"
     depends_on:

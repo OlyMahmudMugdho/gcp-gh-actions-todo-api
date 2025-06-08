@@ -3,6 +3,7 @@ package config
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/jackc/pgx/v5"
 )
@@ -10,7 +11,8 @@ import (
 var DB *pgx.Conn
 
 func ConnectDB() {
-	conn, err := pgx.Connect(context.Background(), "postgres://postgres:postgres@db:5432/todo?sslmode=disable")
+	host := os.Getenv("PG_HOST")
+	conn, err := pgx.Connect(context.Background(), fmt.Sprintf("postgres://postgres:postgres@%v:5432/todo?sslmode=disable", host))
 	if err != nil {
 		panic(fmt.Sprintf("Unable to connect to database: %v", err))
 	}
