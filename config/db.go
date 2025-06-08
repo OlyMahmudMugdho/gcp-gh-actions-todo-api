@@ -10,7 +10,7 @@ import (
 var DB *pgx.Conn
 
 func ConnectDB() {
-	conn, err := pgx.Connect(context.Background(), "postgres://postgres:postgres@db:5432/todo")
+	conn, err := pgx.Connect(context.Background(), "postgres://postgres:postgres@db:5432/todo?sslmode=disable")
 	if err != nil {
 		panic(fmt.Sprintf("Unable to connect to database: %v", err))
 	}
