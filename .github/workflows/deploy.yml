@@ -39,6 +39,6 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            git https://github.com/OlyMahmudMugdho/gcp-gh-actions-todo-api
+            git clone https://github.com/OlyMahmudMugdho/gcp-gh-actions-todo-api
             cd ~/gcp-gh-actions-todo-api
             docker-compose up -d
